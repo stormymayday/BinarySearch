@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterative Binary Search</title>
+</head>
+<body>
+    <h1>Iterative Binary Search</h1>
+    <script>
+
+        const binarySearch = (data, target) => {
+
+            let bottom = 0;
+            let top = data.length - 1;
+
+            while(bottom <= top) {
+
+                 const midpoint = bottom + Math.floor((top - bottom) / 2);
+
+                 if(target === data[midpoint]) {
+                     return midpoint;
+                 } 
+
+                 if(target < data[midpoint]) {
+                     top = midpoint - 1; 
+                 } else {
+                     bottom = midpoint + 1; 
+                 }
+              
+            }
+
+            return -1;
+
+        }
+
+        // Test Playlist array
+        const playlist = ['Dire Straits', 'Always', 'Wind of Change', 'Send me an Angel', 'Fortunate Son', 'Looking Out my Back Door', 'Fortunate Song', 'You And I',  'Still Loving You', 'Paranoid', 'Rock You Like A Hurricane', 'Have You Ever Seen The Rain', 'Bad Moon Rising', 'Dream On'
+        ];
+
+        // Sorting the array in ascending order
+        playlist.sort();
+
+        // Displaying the array elements
+        console.log(`Playlist:`);
+        for(let i = 0; i<playlist.length; i++) {
+            console.log(`${i} ${playlist[i]}`);
+        }
+
+        // Separator Line
+        console.log(`-------------------`);
+        
+        // Searching for song 'Paranoid' which is at index 8
+        console.log(`Paranoid found at index ${binarySearchModified(playlist, 'Paranoid')}`);
+
+        // Searching for song 'Oceandeep' which is NOT in the playlist
+        console.log(`Oceandeep found at index ${binarySearchModified(playlist, 'Oceandeep')}`);
+
+    </script>
+</body>
+</html>
